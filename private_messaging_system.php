@@ -39,8 +39,8 @@ class Private_messaging_system{
 		}
 		if($this->validate_message($message)){
 			mysql_query($query);
-			// comment this function out if you do not want to email a user of a new message
-			$this->_email_user_of_new_message($to,$from,$subject);
+			// uncomment this function out if you want to email a user of a new message
+			//$this->_email_user_of_new_message($to,$from,$subject);
 			return TRUE;
 		}else{
 			return FALSE;
@@ -82,7 +82,7 @@ class Private_messaging_system{
 	public function delete_message($message_id){
 		$role = "sender_delete";
 		$id = $_SESSION['user_id'];
-		$query = mysql_query("SELECT user_to FROM " . TBL_MESSAGES . " WHERE id = '" . $message_id . "'");
+		$query = mysql_query("SELECT user_to FROM " . TBL_MESSAGES . " WHERE id = '" . $message_id . "' OR respond = '" . $message_id . "'");
 		while($data = mysql_fetch_object($query)){
 			if($data->user_to != $id){
 				$role = "receiver_delete";
