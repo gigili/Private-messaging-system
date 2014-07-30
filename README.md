@@ -7,7 +7,8 @@ It's still under development. To find out more, visit the issues page.
 
 The main core of this project is completed. 
 
-You can implement this on your website without any problems and use it as.
+You can implement this on your website without any problems and use it.
+
 
 Current options
 ===============
