@@ -2,9 +2,13 @@ Private-messaging-system
 ========================
 
 This is my own class for private messaging system, built using plain PHP. 
+
 It's still under development. To find out more, visit the issues page.
 
-The main core of this project is completed. You can implement this on your website without any problems and use it as.
+The main core of this project is completed. 
+
+You can implement this on your website without any problems and use it.
+
 
 Current options
 ===============
@@ -23,4 +27,5 @@ Notify user by email of new message - just uncomment the line 43
 
 
 Best regards,
+
 Igor Ilic
