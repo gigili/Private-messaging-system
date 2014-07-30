@@ -32,6 +32,9 @@ class Private_messaging_system{
 	**/
 	public function send_message($to, $message, $subject, $respond = 0){
 		$from = $_SESSION['user_id']; // ID of a user sending a message
+
+		$message = $this->_validate_message($message); // validate message to see if it safe, to be passed to the database
+
 		if($respond == 0){
 			$query = "INSERT INTO " . TBL_MESSAGES . " (user_to, user_from, subject, message) VALUES(" . $to . ", " . $from . ", '" . $subject . "', '" . $message . "')";
 		}else{
@@ -140,7 +143,10 @@ class Private_messaging_system{
 	*	$message = message that will be validate for security purposes
 	**/
 	private function _validate_message($message){
-		//TODO
+		$return = trim($message); // trims all the white space at the beginning and the end of string
+		$return = filter_var($message, FILTER_SANITIZE_STRING); // strips tags
+		$return = filter_var($message, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // Equivalent to calling htmlspecialchars()
+		return $return;
 	} // END _validate_message
 
 } // END class
