@@ -10,11 +10,17 @@ Current options
 ===============
 
 Send a new message - send_message()
+
 Respond to a message - send_message($respond > 0)
+
 Get the list of all messages for a single user ( inbox ) - get_all_messages()
+
 Get the number of unread messages - get_number_of_unread_messages()
+
 Delete a single message or entire conversation - delete_message()
+
 Notify user by email of new message - just uncomment the line 43
+
 
 Best regards,
 Igor Ilic
