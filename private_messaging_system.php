@@ -87,7 +87,7 @@ class Private_messaging_system{
 		 	$t = $t . "De: ".$row['user_to']." para ".$row['user_from']." <br> ".$row['subject']." <br> ".$row['message']."<br>";
 		 }
 
-		 return $t;
+		 return htmlspecialchars(trim($t));
 	} // END get_all_messages
 
 	public function get_message($message_id){
@@ -101,7 +101,7 @@ class Private_messaging_system{
 			}			
 		}
 		$query = $conn->query("SELECT * FROM " . TBL_MESSAGES . " WHERE id = '" . $message_id . "' AND (user_to = '" . $id . "' OR user_from = '" . $id . "') OR respond = '" . $message_id . "' AND " . $role . " != 'n'");
-		return $query;
+		return htmlspecialchars(trim($query));
 	} // END get_message
 
 	public function delete_message($message_id){
@@ -144,8 +144,8 @@ class Private_messaging_system{
 	**/
 	private function _email_user_of_new_message($to,$from,$subject){
 		global $conn;
-		$r = $conn->fetch_object(mysqli_query("SELECT first_name,last_name,email FROM " . TBL_USERS . " WHERE id = '" . $to . "'"));
-		$u = $conn->fetch_object(mysqli_query("SELECT first_name,last_name FROM " . TBL_USERS . " WHERE id = '" . $from . "'"));
+		$r = $conn->fetch_object($conn->query("SELECT first_name,last_name,email FROM " . TBL_USERS . " WHERE id = '" . $to . "'"));
+		$u = $conn->fetch_object($conn->query("SELECT first_name,last_name FROM " . TBL_USERS . " WHERE id = '" . $from . "'"));
 		$name = $r->first_name . " " . $r->last_name;
 		$uname = $u->first_name . " " . $u->last_name;
 		$to_email = $r->email;
@@ -177,3 +177,5 @@ class Private_messaging_system{
 	} // END _validate_message
 
 } // END class
+
+?>
