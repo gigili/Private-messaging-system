@@ -35,7 +35,7 @@ Licence
 
 This project is licensed under the MIT license.
 
-  Copyright (c) 2014 Igor Ilic <mr.giliIII@gmail.com>
+  Copyright (c) 2014 Igor Ilic <github@igorilic.net>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
